@@ -1,0 +1,15 @@
+main{
+  animation: flip_and_rotate 4s;
+}
+
+@keyframes flip_and_rotate{
+  33%{
+    transform: rotateY(180deg);
+  }
+  66%{
+    transform: rotateX(180deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}

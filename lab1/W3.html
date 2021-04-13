@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet"
+          href="stylew3.css">
+    <title>
+      w3css
+    </title>
+  </head>
+  <body>
+    <nav class="w3-bar w3-orange">
+      <div class="w3-hide-small">
+        <span class ="w3-left ">
+          <div class="w3-dropdown-click">
+  
+            <button class="w3-button w3-mobile" onclick="drop('produkty-drop-big')">
+              Produkty <i class="fa fa-caret-down"></i>
+            </button>
+            <div id="produkty-drop-big" class="w3-dropdown-content w3-bar-block w3-card-2">
+              <a href="#" class="w3-bar-item w3-button">Komputery</a>
+              <a href="#" class="w3-bar-item w3-button">Akcesoria</a>
+            </div>
+  
+          </div>
+        </span>
+  
+        <div class="w3-bar-item search-container w3-right">
+          <form>
+            <input type="text" placeholder="Search..">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>  
+      </div> 
+      <a href="javascript:void(0)" 
+      class="w3-bar-item w3-button w3-left w3-hide-large w3-hide-medium" 
+      onclick="drop('menu-mobile')">&#9776;</a>
+
+      <div id="menu-mobile" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
+        <div class="w3-dropdown-click" >
+          <button class="w3-button" onclick="drop('produkty-drop-small')">Produkty </button>
+          <div id="produkty-drop-small" class="w3-dropdown-content w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button">Komputery</a>
+            <a href="#" class="w3-bar-item w3-button">Akcesoria</a>
+          </div>
+        </div>
+        <div class="w3-bar-item search-container w3-left">
+          <form>
+            <input type="text" placeholder="Search..">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>  
+      </div>
+      
+    </nav>
+      <!-- Tutaj treść strony / Here the content of the page-->
+    <main class="w3-content">
+      <div class="w3-row">
+      
+        <div class="w3-col w3-container l8 m8 w3-border">
+            <img src="komp1.jpg" class="w3-round w3-image">
+            <p>Zestaw 1</p>
+        </div>
+        <div class = "w3-col w3-container l4 m4 w3-border">
+            <img src="komp1.jpg" class="w3-round w3-image">
+            <p>Zestaw 2</p>
+        </div>
+    </div>
+
+    <div class="w3-row">
+        <div class="w3-col w3-container l4 m4 w3-border">
+          <img src="myszka1.jpg" class="w3-round w3-image">
+        </div>
+        <div class="w3-col w3-container l4 m4 w3-border">
+          <img src="myszka1.jpg" class="w3-round w3-image">
+        </div>
+    </div>
+    </main>
+    
+    <footer class="w3-conatiner w3-orange w3-content">
+      <!-- Tutaj treść stopki / Here the content of the footer -->
+      <a href="mailto:twoj.adres.email">Maciej Czyjt</a>
+    </footer>
+  
+  </body>
+  <script>
+    function drop(id) {
+      var x = document.getElementById(id);
+      if (x.className.indexOf("w3-show") == -1) { 
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+  </script>
+ 
+</html>
