@@ -1,4 +1,3 @@
-# JS
 JavaScript class solutions for AGH Computer Science course
 
 1. **HTML + CSS**
