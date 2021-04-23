@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" media="screen" type="text/css" />
+    <title>dla geekow</title>
+    <style>
+      .charts {
+        width: 49%;
+        height: 35%;
+        border: 1px solid;
+      }
+      #div_bar {
+        float: right;
+      }
+      #params_scatter {
+        width: 50%;
+        float: left;
+      }
+    </style>
+    <script src="library.js"></script>
+  </head>
+  <body>
+    <div id="div_bar" class="charts">
+      <canvas id="bar"></canvas>
+    </div>
+    <div id="div_scatter" class="charts">
+      <canvas id="scatter"></canvas>
+    </div>
+    <div id="params_scatter">
+      <p>Wykres punktowy</p>
+      <form id="form">
+        wartości x po przecinku np: "1,2,3,4": <input type="text" id="xData" />
+      </form>
+      <form id="form">
+        wartości y po przecinku np: "1,2,3,4": <input type="text" id="yData" />
+      </form>
+      <form id="form">
+        skok na osi x: <input type="text" id="xStep" value="1" />
+      </form>
+      <form id="form">
+        skok na osi y: <input type="text" id="yStep" value="0.2" />
+      </form>
+      <form id="form">opis osi x: <input type="text" id="xlabel" /></form>
+      <form id="form">opis osi y: <input type="text" id="ylabel" /></form>
+      <form id="form">
+        promień: <input type="number" id="r" value="0.04" />
+      </form>
+      <button id="submit_scatter" onclick="update_scatter()">Submit</button>
+    </div>
+    <div id="params_bar">
+      <p>Wykres słupkowy</p>
+      <form id="form">
+        dodatnie wartości po przecinku np"100, 20, 30 80":
+        <input type="text" id="bar_data" />
+      </form>
+      <form id="form">
+        etykiety po przecinku np" Afryka, Europa, Ameryka":
+        <input type="text" id="bar_labels" />
+      </form>
+      <button id="submit_bar" onclick="update_bar()">Submit</button>
+    </div>
+  </body>
+  <script>
+    var canvas = document.getElementById("bar");
+    var canvasSc = document.getElementById("scatter");
+    var ctx = canvas.getContext("2d");
+    var ctxSc = canvasSc.getContext("2d");
+    fitToContainer(canvas);
+    fitToContainer(canvasSc);
+    var xData = [];
+    var yData = [];
+    var xStep = 1;
+    var yStep = 0.2;
+    var xLabel = "oś X";
+    var yLabel = "oś Y";
+    var r = 0.04;
+    var barData = [15, 67, 25, 150, 94];
+    var barLabels = ["label1", "label2", "label3", "label4", "label5"];
+    var barColors = ["#C70039", "#d6c44b", "#5ed64b", "#4bd6c8", "#524bd6"];
+    var step = 0.1;
+    for (let i = -Math.PI; i <= Math.PI; i += step) {
+      xData.push(i);
+      yData.push(Math.sin(i));
+    }
+    barChart(ctx, barData, barLabels, barColors);
+
+    scatterPlot(
+      ctxSc,
+      xData,
+      yData,
+      xStep,
+      yStep,
+      getRandomColor(),
+      xLabel,
+      yLabel,
+      r
+    );
+
+    function update_scatter() {
+      xData = document
+        .getElementById("xData")
+        .value.split(",")
+        .map((x) => +x);
+      yData = document
+        .getElementById("yData")
+        .value.split(",")
+        .map((x) => +x);
+      xStep = parseFloat(document.getElementById("xStep").value);
+      yStep = parseFloat(document.getElementById("yStep").value);
+      xLabel = document.getElementById("xlabel").value;
+      yLabel = document.getElementById("ylabel").value;
+      r = parseFloat(document.getElementById("r").value);
+      console.log([
+        xData,
+        yData,
+        xStep,
+        yStep,
+        getRandomColor(),
+        xLabel,
+        yLabel,
+        r,
+      ]);
+      scatterPlot(
+        ctxSc,
+        xData,
+        yData,
+        xStep,
+        yStep,
+        getRandomColor(),
+        xLabel,
+        yLabel,
+        r
+      );
+    }
+
+    function update_bar() {
+      barData = document
+        .getElementById("bar_data")
+        .value.split(",")
+        .map((x) => +x);
+      barLabels = document.getElementById("bar_labels").value.split(",");
+      barColors = [];
+      for (let i = 0; i < barData.length; i++) {
+        barColors.push(getRandomColor());
+      }
+      console.log([
+      barData, barLabels, barColors
+      ]);
+      barChart(ctx, barData, barLabels, barColors);
+    }
+  </script>
+</html>

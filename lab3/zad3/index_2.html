@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>zad3 webcomponent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="counter.js"></script>
+  </head>
+  <body>
+    <form id="form"><input type="number" id="liczba" value="10" /></form>
+    <button id="Submit" onclick="update2()">Submit</button>
+    <div id="spans">
+      <span-licznik count="10"></span-licznik></tr>
+      <span-licznik count="10"></span-licznik></tr>
+      <span-licznik count="10"></span-licznik></tr>
+    </div>
+    <script>
+      const spans_div = document.getElementsByTagName("span-licznik");
+
+      function update2(){
+        let num = document.getElementById("liczba").value;
+        for(let i=0; i<spans_div.length; i++){
+          spans_div[i].setAttribute("count", num);
+        }
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,5 @@
+@keyframes colorchange
+{
+    from {color:red}
+    to {color:blue}
+}

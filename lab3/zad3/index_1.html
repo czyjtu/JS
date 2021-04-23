@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>zad3 span</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet"
+          href="https://unpkg.com/mocha/mocha.css"> -->
+  </head>
+  <body>
+    <form id="form">Liczba <input type="number" id="liczba" value="10" /></form>
+    <button id="Submit" onclick="update()">Submit</button>
+    <div id="spans">
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+    </div>
+    <p id="demo"></p>
+    <script>
+      const spansDiv = document.getElementById("spans");
+      var number = 10;
+      var interval = window.setInterval(decrement, 1000);
+
+      function update() {
+        number = document.getElementById("liczba").value;
+      }
+
+      function decrement() {
+        number = number - 1 > 0 ? number - 1 : 0;
+        for (i = 0; i < spansDiv.childNodes.length; i++) {
+          // tworze nowa gałąź z nowąwartością
+          var newSpan = document.createElement("span");
+          var newContent = document.createTextNode(number);
+          newSpan.appendChild(newContent);
+          var oldSpan = spansDiv.childNodes[i];
+          spansDiv.replaceChild(newSpan, oldSpan);
+        }
+        // console.log(number);
+      }
+    </script>
+  </body>
+</html>
